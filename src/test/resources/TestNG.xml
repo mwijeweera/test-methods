@@ -3,6 +3,7 @@
     <test name="Regression suite 1" >
         <classes>
             <class name="TestMethods"/>
+            <class name="TestFunctions"/>
         </classes>
     </test>
     <listeners>
