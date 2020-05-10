@@ -7,5 +7,6 @@ public class TestFunctions {
     {
         String os=System.getProperty("os.arch");
         System.out.println(os);
+        System.out.println(os);
     }
 }
