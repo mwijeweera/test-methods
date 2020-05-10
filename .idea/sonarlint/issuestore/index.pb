@@ -7,3 +7,5 @@ H
 src/test/java/Retry.java,1\b\1b21c1571d374a513263aa35b8815640abc1ad33
 N
 src/test/java/TestMethods.java,e\0\e08be900a084fcc175d0a88a5ebcb9b09367c8fd
+P
+ src/test/java/TestFunctions.java,b\a\ba51c57bf0ab198685453a9535c704f20d60e5c0

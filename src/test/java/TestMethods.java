@@ -20,7 +20,7 @@ import java.util.Date;
 
 public class TestMethods {
 
-    protected SoftAssert softAssert;
+
     private int passed = 0;
     private int failed = 0;
     private int skipped = 0;
@@ -49,10 +49,6 @@ public class TestMethods {
 
     }
 
-    int randomWithRange(int min, int max) {
-        int range = (max - min) + 1;
-        return (int) (Math.random() * range) + min;
-    }
 
     @Test
     public void test1() {
@@ -101,6 +97,23 @@ public class TestMethods {
 
     }
 
+
+    @AfterSuite
+    public void afterSuite(ITestContext context) throws IOException {
+        suiteEndTime = System.currentTimeMillis();
+
+
+        /* Generating the report */
+        printSuiteResults(context.getSuite());
+        extentReports.flush();
+
+    }
+
+    int randomWithRange(int min, int max) {
+        int range = (max - min) + 1;
+        return (int) (Math.random() * range) + min;
+    }
+
     private void printAllResults(Collection<ITestResult> results) {
         for (ITestResult result : results) {
 
@@ -140,29 +153,6 @@ public class TestMethods {
         for (ISuiteResult suiteResult : suiteResults) {
             printAllResults1(suiteResult.getTestContext());
         }
-    }
-
-    @AfterSuite
-    public void afterSuite(ITestContext context) throws IOException {
-        suiteEndTime = System.currentTimeMillis();
-
-
-        /* Generating the report */
-        printSuiteResults(context.getSuite());
-        /* Writing test results to the mail */
-
-        /* Generating the Extent test report */
-        extentReports.flush();
-
-        //Pie Chart Generation For the Mail
-        //   int passed = Integer.parseInt(PropertyFileReader.propertyReader("src/test/resources/utility/email/testResults.properties").getProperty("passed"));
-        //   int failed = Integer.parseInt(PropertyFileReader.propertyReader("src/test/resources/utility/email/testResults.properties").getProperty("failed"));
-        //  int skipped = Integer.parseInt(PropertyFileReader.propertyReader("src/test/resources/utility/email/testResults.properties").getProperty("skipped"));
-
-        //   PieChartGeneration.createPieChart(passed, failed, skipped);
-
-        //Sending the Mail
-        //  MailUtil.sendMail();
     }
 
 
